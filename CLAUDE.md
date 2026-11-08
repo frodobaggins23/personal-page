@@ -1,14 +1,106 @@
 # Personal page
 
-This is a green field project of my personal page.
+My personal portfolio site: React + TypeScript + Vite SPA, Czech (default) and English, dark and
+light theme, self-hosted as a static `dist/`. Tooling, naming, folder and testing rules come from
+`~/.claude/CLAUDE.md` and `~/.claude/rules/react-typescript.md`; this file adds what is specific to
+this repo and wins on conflict.
 
-Design concept is stored in ./docs/blueprint. The code implementation must implement it visually 1:1.
+The design is in `docs/blueprint/` and the implementation matches it visually 1:1, except for the
+deliberate deviations listed under "Agreed decisions".
 
-Technology and stack wise, use instruction from system level CLAUDE.md.
+## Commands
 
-I have prepared some partial guidelines to do several TODO.md files across the workspace that give better clarity on how I want you to scaffold things. Please use them for guidance.
+| Command                | Purpose                                                          |
+| ---------------------- | ---------------------------------------------------------------- |
+| `npm run dev`          | Vite dev server                                                  |
+| `npm run build`        | `tsc -b` + production build into `dist/`                         |
+| `npm run typecheck`    | `tsc -b`                                                         |
+| `npm run lint`         | ESLint                                                           |
+| `npm run lint:tailwind`| Tailwind classes that have a shorter canonical form (exit 1)     |
+| `npm run format:check` | Prettier check (`format` writes)                                 |
+| `npm run test:run`     | Vitest single run (`test` is watch mode)                         |
+| `npx playwright test`  | Visual QA screenshots into `visual-qa/` (gitignored)             |
 
-If anything unclear, ask user for consultation or assistance.
+Run Playwright **exactly** as `npx playwright test`, without extra flags or pipes: the sandbox
+exclusion that lets Chrome start matches that exact command string.
+
+Definition of done for any change: `typecheck`, `lint`, `lint:tailwind`, `format:check`,
+`test:run` and `build` pass. A visible change also gets a Playwright run and a look at the affected
+screenshots. Say plainly what was not run.
+
+## Where things live
+
+```
+src/
+  components/   shared UI, one folder per component (ProjectCard, Overlay, Timeline, ...)
+  pages/        one folder per route: mainPage, projectPage, contrastReportPage, notFoundPage
+                (page-specific sections and subcomponents are nested in the page folder)
+  services/     localizationService (i18next setup), contrastReportService (WCAG math + CSS probing)
+  hooks/        useLanguage, useTheme, useYearsOfPraxis, useDocumentTitle
+  utils/        pure helpers (calculateYearsOfPraxis, setLanguage, setColorTheme, numberToWords, ...)
+  config/       siteConfig (code constants), content (typed access to common.json), navigation
+  locales/      cs.json, en.json, common.json
+  styles/       theme.css (the single source of design tokens)
+  types/        shared types
+e2e/            Playwright visual QA only
+scripts/        repo tooling (lintTailwind.mjs)
+```
+
+Path alias `@/` → `src/`. No barrel files. Named exports only. TDD is on.
+
+## Conventions
+
+### Styling
+- Tailwind v4 with the tokens in `src/styles/theme.css` (`bg-surface`, `text-fg-muted`,
+  `border-line`, `text-accent-ink`, ...). No `dark:` prefixes: dark is the default, light is
+  `data-theme="light"` on `<html>`, and every token re-themes in place.
+- Never hard-code a color or font size that has a token. Font sizes in `rem`. Use the spacing scale
+  (`h-15`, `gap-x-18`, `size-2.75`), not `h-[60px]`. Arbitrary values are for things the scale and
+  tokens cannot express (radii, `flex-[999_1_520px]`, grid templates, odd font sizes from the design).
+- Repeated one-off styles become a `@utility` in `theme.css` (see `nav-current`, `cursor-blink`),
+  not an inline arbitrary value. Run `npm run lint:tailwind` after touching classes.
+- Mobile first. The switch from mobile to desktop is `lg` (1024 px); two separate navigation
+  components, `NavigationMobile` and `NavigationDesktop`.
+- Exact paddings, sizes and colors for new work: `docs/blueprint/portfolio-handoff/design-source/*.html`
+  (reference only, they do not run).
+- Adding, renaming or removing a color token: update `PAIR_DEFINITIONS` in
+  `src/services/contrastReportService.ts` in the same change. Any new color pair is added there.
+
+### Content and i18n
+- ALL user-visible text lives in the locale files, including `aria-label`, `alt` and visually hidden
+  text. Nothing hard-coded in components.
+- `cs.json` and `en.json` hold only text that differs between languages, strictly under
+  `shared` / `pages` / `other`. `common.json` (i18next namespace `common`, also imported directly via
+  `src/config/content.ts`) holds everything identical in both languages: URLs, company names, stack
+  tags, job years, project slugs / order / status / media, terminal output. Rule of thumb: same value
+  in cs and en → `common.json`; a setting you flip in code → `src/config/siteConfig.ts`.
+- Both language files always have the same keys. i18next plurals need `_one`/`_other`, and Czech also
+  `_few`.
+- Project text is stored once under `pages.projectPage.projects.<slug>.{card,detail}`. Slugs and
+  card order: `moje-hory`, `self-hosted`, `agent-rules`, `three-glasses`. Only `moje-hory` has real
+  copy; the others render the same template with `[bracket]` placeholders.
+- The years of React come from `calculateYearsOfPraxis(IT_START_DATE, now)`. The hero numeral is
+  digits; everywhere else it is spelled out with `numberToWords` (7–20, digits outside) and passed
+  through `useYearsOfPraxis()` (`count`, `yearsWord`, `yearsWordAfterPo`), with i18next plurals for the
+  noun and `{{yearsWord, capitalize}}` at the start of a sentence.
+- `about.body` contains `<em>`: render with `<Trans>`, never `dangerouslySetInnerHTML`.
+- `[square bracket]` placeholders stay until the user fills them in before going live. Links whose
+  value is not http(s) render as `#` (`getSafeExternalUrl`).
+- Images (screenshots, photo) use `ImagePlaceholder` until real files exist.
+
+### Contrast report (`/accessibility`)
+- Never static: `contrastReportService` probes the live CSS variables under throw-away
+  `[data-theme]` elements, so it always reflects `theme.css`. Colors with alpha are composited first.
+- The math (parse, luminance, ratio, grading, summary, verdict) is pure and unit-tested; only the
+  probing touches the DOM. Verdict text is chosen from the computed results, and "Checked" shows the
+  build date (`__BUILD_DATE__`, injected by Vite).
+
+### Utils and tests
+- Utils are pure: clock, storage and `navigator` are injected, never read inside the function.
+  Storage access may throw (private mode) and is handled.
+- Tests live in `__tests__/` next to the code. Query by role and accessible name. Use
+  `renderWithProviders` (`src/test/`) for components that need translations or the router.
+- Unit tests never touch a real network or clock.
 
 ## Guiding principles: mobile first, accessible first
 
@@ -43,11 +135,10 @@ baseline; the rules below extend it.
   and focus returns to the element that opened it. Background scroll is locked.
 - Route changes (SPA): update `document.title` per page (localised) and move focus to the new page's
   `h1` (or announce it), so screen reader users notice the navigation. Scroll to top on navigation,
-  except for in-page hash links.
+  except for in-page hash links, which scroll smoothly (instantly under reduced motion).
 
 ### Names, labels, language
-- Every accessible name, `aria-label`, `alt` and visually hidden text comes from the locale files
-  (nothing hardcoded, see `src/services/TODO.md`).
+- Every accessible name, `aria-label`, `alt` and visually hidden text comes from the locale files.
 - Icon-only buttons have an `aria-label`; icons themselves (`lucide-react`) are `aria-hidden="true"`.
 - Link text must make sense out of context: the four "Read more" links include the project title
   in their accessible name (e.g. visually hidden suffix). Same for "Next project".
@@ -65,7 +156,7 @@ baseline; the rules below extend it.
   orange). Any new color pair is added to the contrast report pair list in the same change.
 - Never color alone: status dots, pass/fail in the report and the current timeline item always have
   text (or an accessible name) as well.
-- Touch targets at least 44 × 44 px (stricter than WCAG 2.2's 24 px minimum, as the design specifies).
+- Touch targets at least 44 × 44 px (stricter than WCAG 2.2's 24 px minimum).
 - Reflow: no horizontal page scroll at 320 px width or at 400 % zoom; text survives 200 % text-only
   zoom and WCAG text-spacing overrides without clipping. Use `rem` for font sizes so user font
   settings are respected. The only allowed horizontal scroll is inside terminal blocks, which are
@@ -78,36 +169,35 @@ baseline; the rules below extend it.
 ### Verification
 - **Current phase: no dedicated accessibility testing.** Build every page and component with the
   rules above in mind, but do not add accessibility test suites, axe tooling or audit steps yet.
-- Regular unit tests still query by role and accessible name (React Testing Library), as the
-  React rules require.
+- Regular unit tests still query by role and accessible name (React Testing Library).
 - Planned for the next phase (do not start without the user): keyboard behaviour tests (menu and
   overlay `Esc`, focus trap, focus return), automated axe checks on every route in both themes and
   languages (`@axe-core/playwright`, possibly `vitest-axe`, new dev deps needing approval), and a
   manual keyboard-only and screen reader (Orca) pass.
 
-## Agreed decisions (2026-11-08)
+## Agreed decisions
 
-Settled with the user. They override `docs/blueprint` wherever the two differ. Do not re-ask them.
-Task-level details live in the `TODO.md` files (root and `src/*/TODO.md`).
+Settled with the user (2026-11-08). They override `docs/blueprint` wherever the two differ. Do not
+re-ask them.
 
 ### Blueprint
-- Start with `docs/blueprint/portfolio-handoff/README.md` and `docs/design.md` (spec, tokens,
-  layout, components, a11y). `docs/blueprint/Portfolio.pdf` is the visual reference.
-- `design-source/*.html` are only for copying exact values (paddings, sizes, colors). They depend
-  on the design tool's runtime and do not run.
-- `docs/blueprint/` is gitignored on purpose. Copy what you need into `src/`; never import from
-  `docs/`.
+- Start with `docs/blueprint/portfolio-handoff/README.md` and `docs/design.md` (spec, tokens, layout,
+  components, a11y). `docs/blueprint/Portfolio.pdf` is the visual reference.
+- `docs/blueprint/` is gitignored on purpose. Copy what you need into `src/`; never import from `docs/`.
+- Deliberate deviations from the blueprint: language switch order is CZ then EN; the full header
+  (language and theme switches, menu) is on every page, with a back link in the page body instead of
+  the mockups' reduced project and report headers; interactive controls are at least 44 px; the 404
+  page is new (terminal-free: heading, text, link home); the contrast report has extra rows for the
+  inset panel colors.
 
 ### Stack and dependencies
-- React + TypeScript + Vite, npm, Node 24 (`.nvmrc` + `engines`). Tooling, naming and folder rules
-  exactly as in `~/.claude/rules/react-typescript.md`. Package name: `personal-page`.
+- React + TypeScript + Vite, npm, Node 24 (`.nvmrc` + `engines`). Package name: `personal-page`.
 - Approved runtime deps (no further approval needed): `react`, `react-dom`, `tailwindcss` v4 +
-  `@tailwindcss/vite`, `i18next`, `react-i18next`, `react-router` (v7, library/SPA mode),
-  `lucide-react`, `@fontsource-variable/ubuntu-sans`, `@fontsource-variable/ubuntu-sans-mono`.
+  `@tailwindcss/vite`, `i18next`, `react-i18next`, `react-router` (**v7**, library/SPA mode, not
+  v8), `lucide-react`, `@fontsource-variable/ubuntu-sans`, `@fontsource-variable/ubuntu-sans-mono`.
   Anything else: ask first.
-- Approved dev dep beyond the rules file: `@playwright/test` (visual QA only, see below).
+- Approved dev dep beyond the rules file: `@playwright/test` (visual QA only).
 - No `i18next-browser-languagedetector`: language detection is `src/utils/setLanguage`.
-- Path alias `@/` → `src/`. Barrel files: off. TDD: on.
 
 ### Hosting and rendering
 - Self-hosted on the user's Ubuntu VPS. **No Vercel.** The design copy ("This site, self-hosted",
@@ -115,27 +205,24 @@ Task-level details live in the `TODO.md` files (root and `src/*/TODO.md`).
 - Plain SPA: one `index.html`, client-side routing, deliverable is a static `dist/`. The README
   documents the nginx fallback (`try_files $uri $uri/ /index.html;`).
 - Routes: `/` (mainPage), `/projects/:slug` (projectPage), `/accessibility` (contrastReportPage),
-  and a catch-all 404 page (not in the design: minimal, same visual language, copy in JSON).
-- Language is not part of the URL.
+  and a catch-all 404 page. An unknown project slug renders the 404 page. Language is not part of
+  the URL.
 
 ### Language and theme
 - Languages: `cs` (default) and `en`. UI label "CZ", language code `cs`.
 - Initial language: `localStorage` → browser language (`cs` or `sk` → `cs`, anything else → `en`)
-  → `cs`. Remember the user's choice in `localStorage`, keep `<html lang>` in sync.
-  This overrides the blueprint's English default.
+  → `cs`. Only an explicit switch is remembered in `localStorage` (the detected value is not
+  persisted). `<html lang>` stays in sync.
 - Initial theme: `localStorage` → `prefers-color-scheme` → dark. Applied by the no-flash inline
-  script in `index.html` before React mounts (see blueprint README), toggled in place via
-  `data-theme="light"` on `<html>`.
+  script in `index.html` before React mounts (same storage key `theme` as `setColorTheme`), toggled
+  in place via `data-theme="light"` on `<html>`.
 
-### Content
-- `[square bracket]` placeholders stay for now; the user fills them in before going live.
-- Images (screenshots, photo) use `ImagePlaceholder` until real files exist.
-- The IT start date (input for `calculateYearsOfPraxis`) is a code constant `IT_START_DATE` in
-  `src/config/siteConfig.ts` (placeholder `'01-2019'`), never in the locale files.
-- The availability flag is a code constant `IS_OPEN_TO_WORK` in the same file. Its text lives in the
-  locale files. When `false`, the availability badge is hidden (no "not available" state).
+### Settings in code
+- `IT_START_DATE` (placeholder `'01-2019'`, `mm-yyyy`) and `IS_OPEN_TO_WORK` live in
+  `src/config/siteConfig.ts`, never in the locale files. Only the availability text is localised;
+  when the flag is `false` the badge is hidden (no "not available" state).
 
 ### Visual QA
 - Verify "1:1" with Playwright screenshots of every route at 390 px and 1440 px, in dark and light
-  theme, compared against `docs/blueprint/Portfolio.pdf`. Fix differences before calling a page
-  done. Screenshot output goes to a gitignored folder.
+  theme (`npx playwright test`), compared against `docs/blueprint/Portfolio.pdf`. Fix differences
+  before calling a page done. Output goes to the gitignored `visual-qa/` folder.
