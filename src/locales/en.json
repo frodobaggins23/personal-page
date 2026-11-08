@@ -1,0 +1,432 @@
+{
+    "shared": {
+        "navigation": {
+            "ariaLabel": "Main",
+            "skipToContent": "Skip to content",
+            "homeLabel": "franta, home",
+            "items": {
+                "experience": "Experience",
+                "projects": "Projects",
+                "about": "About",
+                "contact": "Contact"
+            },
+            "menu": {
+                "open": "Open menu",
+                "close": "Close menu"
+            },
+            "languageLabel": "Language",
+            "themeLabel": "Theme",
+            "themeDark": "Dark",
+            "themeLight": "Light",
+            "switchToLight": "Switch to light theme",
+            "switchToDark": "Switch to dark theme",
+            "allProjects": "All projects",
+            "backToHome": "Back to home",
+            "home": "Home"
+        },
+        "components": {
+            "footer": {
+                "builtWith": "Built with React + TypeScript. Served from Ubuntu, by me.",
+                "accessibilityReport": "Accessibility: color contrast report (WCAG 2.2)",
+                "copyright": "© {{year}} Franta [Surname]"
+            },
+            "projectCard": {
+                "readMore": "Read more",
+                "readMoreAbout": "about {{title}}"
+            },
+            "overlay": {
+                "close": "Close"
+            },
+            "timeline": {
+                "stackLabel": "Stack"
+            }
+        }
+    },
+    "pages": {
+        "mainPage": {
+            "hero": {
+                "prompt": "whoami",
+                "promptOutput": "franta · frontend developer · Brno, CZ",
+                "role": "frontend developer · Brno, CZ",
+                "titleLine1_one": "year of",
+                "titleLine1_other": "years of",
+                "titleLine2": "React.",
+                "subtitle": "Now reaching beyond the browser.",
+                "lead": "React is my foundation. With AI agents as a pair programmer, I'm moving into backend and Linux faster than I could alone, with tests and code review still on me.",
+                "availability": {
+                    "openToWork": "Open to new roles · [from MONTH YEAR]"
+                },
+                "cta": "Get in touch",
+                "stackLabel": "Main stack"
+            },
+            "experience": {
+                "label": "01 / Experience",
+                "title_one": "{{yearsWord, capitalize}} year shipping React to production.",
+                "title_other": "{{yearsWord, capitalize}} years shipping React to production.",
+                "now": "now",
+                "jobs": {
+                    "job-1": {
+                        "role": "Frontend Developer",
+                        "summary": "[One or two sentences: the kind of product, who used it and what you were trusted with in the team.]"
+                    },
+                    "job-2": {
+                        "role": "Frontend Developer",
+                        "summary": "[One or two sentences on what you did there.]"
+                    },
+                    "job-3": {
+                        "role": "[Junior] Frontend Developer",
+                        "summary": "[One or two sentences on what you did there.]"
+                    }
+                },
+                "before": {
+                    "period": "Before {{year}}",
+                    "title": "Online marketing",
+                    "summary": "Analytics, email campaigns, campaign coordination and running projects on my own.",
+                    "link": "More in About"
+                }
+            },
+            "projects": {
+                "label": "02 / Projects",
+                "title": "What I build beyond the day job.",
+                "intro": "Client work stays under NDA. These are mine, so you can dig into the code."
+            },
+            "about": {
+                "label": "03 / About",
+                "title": "Before code, there was marketing.",
+                "body": "I started out in online marketing: Google Analytics, email campaigns, coordinating launches and running projects on my own. That's why I still ask <em>\"how will we measure this?\"</em> before I open the editor, and why I'm comfortable talking to product, marketing and clients, not just other devs.",
+                "facts": {
+                    "linux": {
+                        "label": "Linux",
+                        "value": "Ubuntu is my daily OS, for work and everything else. Getting better at the terminal and system config, one dotfile at a time."
+                    },
+                    "learning": {
+                        "label": "Learning",
+                        "value": "Python and backend development."
+                    },
+                    "offTheClock": {
+                        "label": "Off the clock",
+                        "value": "Hiking South Moravia and beyond."
+                    },
+                    "languages": {
+                        "label": "Languages",
+                        "value": "Czech (native), English ([level])"
+                    }
+                },
+                "photo": {
+                    "placeholderLabel": "[PHOTO]",
+                    "alt": "Photo placeholder: Franta",
+                    "caption": "That's me, usually somewhere on a trail.",
+                    "enlarge": "Enlarge photo",
+                    "dialogLabel": "Photo of Franta"
+                }
+            },
+            "contact": {
+                "label": "04 / Contact",
+                "title": "Let's talk.",
+                "body": "Based in Brno. Hybrid preferred, fully remote works too.",
+                "linkedin": "Message me on LinkedIn",
+                "github": "GitHub"
+            }
+        },
+        "projectPage": {
+            "labels": {
+                "fields": {
+                    "type": "Type",
+                    "status": "Status",
+                    "stack": "Stack",
+                    "links": "Links"
+                },
+                "links": {
+                    "demo": "Live demo",
+                    "source": "Source code"
+                },
+                "status": {
+                    "inProgress": "In progress",
+                    "done": "Done"
+                },
+                "sections": {
+                    "whatItIs": "What it is",
+                    "focus": "Focus",
+                    "inUse": "In use today",
+                    "whoDidWhat": "Who did what",
+                    "learned": "What I learned"
+                },
+                "roles": {
+                    "ai": "AI",
+                    "me": "Me"
+                },
+                "screens": "Screenshots",
+                "moreProjects": "More projects",
+                "next": "Next · {{current}} / {{total}}",
+                "backToProjects": "Back to all projects"
+            },
+            "projects": {
+                "moje-hory": {
+                    "card": {
+                        "kind": "01 · Angular app",
+                        "title": "Moje Hory",
+                        "summary": "A mobile-first tracker for climbs to 11 Czech mountains, with GPS tracks, galleries and stats. My way into Angular after years of React.",
+                        "mediaLabel": "Screenshot placeholder: Moje Hory on a phone",
+                        "mediaCaption": "[SCREENSHOT · Moje Hory]"
+                    },
+                    "detail": {
+                        "prompt": "cat moje-hory",
+                        "lead_one": "A mobile-first hiking tracker for 11 Czech mountains, and my way into Angular after {{yearsWord}} year of React.",
+                        "lead_other": "A mobile-first hiking tracker for 11 Czech mountains, and my way into Angular after {{yearsWord}} years of React.",
+                        "type": "Side project, solo",
+                        "whatItIs": "A tracker for my climbs to 11 selected Czech mountains: photo galleries, GPS tracks and yearly stats. It's a rebuild of my old single-page app as a multi-page Angular app.",
+                        "focus": "Learning how Angular thinks. I designed the structure, the design system and every screen. The map had to stay the hero, so the UI is light and warm to sit quietly next to Mapy.cz terrain tiles.",
+                        "inUse": "I log my own climbs in it. [Who else uses it, or how many hikes are in it so far.]",
+                        "ai": "Claude wrote most of the code, from my specs and wireframes.",
+                        "me": "Architecture, design system and agent rules. Reviewing every change and testing it on a real phone, on a real trail.",
+                        "learned": [
+                            "Services and dependency injection instead of hooks and context, and why Angular wants it that way.",
+                            "[Something about templates, routing or signals.]",
+                            "Empty states matter: two climbs is progress, not \"no data\"."
+                        ],
+                        "screens": [
+                            {
+                                "caption": "[SCREEN · mountain list]",
+                                "label": "Screenshot placeholder: mountain list"
+                            },
+                            {
+                                "caption": "[SCREEN · map + GPS track]",
+                                "label": "Screenshot placeholder: map with GPS track"
+                            },
+                            {
+                                "caption": "[SCREEN · stats]",
+                                "label": "Screenshot placeholder: yearly stats"
+                            }
+                        ]
+                    }
+                },
+                "self-hosted": {
+                    "card": {
+                        "kind": "02 · Infrastructure",
+                        "title": "This site, self-hosted",
+                        "summary": "No Vercel, no magic. An Ubuntu VPS I set up and look after myself, from SSH hardening to TLS renewals.",
+                        "mediaLabel": "Terminal output: nginx status and server uptime"
+                    },
+                    "detail": {
+                        "prompt": "cat self-hosted",
+                        "lead": "[One or two sentences introducing the self-hosted site.]",
+                        "type": "[Type, e.g. Side project, solo]",
+                        "whatItIs": "[What it is.]",
+                        "focus": "[What I focused on.]",
+                        "inUse": "[How it is used today.]",
+                        "ai": "[What the AI did.]",
+                        "me": "[What I did.]",
+                        "learned": ["[Learning 1.]", "[Learning 2.]", "[Learning 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[SCREEN · 1]",
+                                "label": "Screenshot placeholder: first screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 2]",
+                                "label": "Screenshot placeholder: second screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 3]",
+                                "label": "Screenshot placeholder: third screen"
+                            }
+                        ]
+                    }
+                },
+                "agent-rules": {
+                    "card": {
+                        "kind": "03 · Workflow",
+                        "title": "Rules for AI agents",
+                        "summary": "How I keep Claude Code and GitHub Copilot on track: tests first, my conventions, my project scaffold.",
+                        "mediaLabel": "Folder tree of the agent rules repository"
+                    },
+                    "detail": {
+                        "prompt": "cat agent-rules",
+                        "lead": "[One or two sentences introducing the agent rules.]",
+                        "type": "[Type, e.g. Side project, solo]",
+                        "whatItIs": "[What it is.]",
+                        "focus": "[What I focused on.]",
+                        "inUse": "[How it is used today.]",
+                        "ai": "[What the AI did.]",
+                        "me": "[What I did.]",
+                        "learned": ["[Learning 1.]", "[Learning 2.]", "[Learning 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[SCREEN · 1]",
+                                "label": "Screenshot placeholder: first screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 2]",
+                                "label": "Screenshot placeholder: second screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 3]",
+                                "label": "Screenshot placeholder: third screen"
+                            }
+                        ]
+                    }
+                },
+                "three-glasses": {
+                    "card": {
+                        "kind": "04 · Concept · Product design",
+                        "title": "Three Glasses",
+                        "summary": "A to-do app concept where your workload is marbles in a glass, so you see it's full before you say yes to one more thing.",
+                        "mediaLabel": "Screenshot placeholder: Three Glasses",
+                        "mediaCaption": "[SCREENSHOT · Three Glasses]"
+                    },
+                    "detail": {
+                        "prompt": "cat three-glasses",
+                        "lead": "[One or two sentences introducing the concept.]",
+                        "type": "[Type, e.g. Concept, solo]",
+                        "whatItIs": "[What it is.]",
+                        "focus": "[What I focused on.]",
+                        "inUse": "[How it is used today.]",
+                        "ai": "[What the AI did.]",
+                        "me": "[What I did.]",
+                        "learned": ["[Learning 1.]", "[Learning 2.]", "[Learning 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[SCREEN · 1]",
+                                "label": "Screenshot placeholder: first screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 2]",
+                                "label": "Screenshot placeholder: second screen"
+                            },
+                            {
+                                "caption": "[SCREEN · 3]",
+                                "label": "Screenshot placeholder: third screen"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "contrastReportPage": {
+            "prompt": "contrast-check --standard wcag22",
+            "title": "Color contrast report",
+            "lead": "Every text and color pair used on this site, in both themes, measured against WCAG 2.2, the current W3C Recommendation. Target: Level AA everywhere, Level AAA wherever the design allows.",
+            "summary": {
+                "pairsChecked": "Pairs checked",
+                "passAA": "Pass AA",
+                "passAAA": "Pass AAA",
+                "checkedOn": "Checked {{date}} · decorative borders excluded from totals"
+            },
+            "thresholds": {
+                "title": "Thresholds",
+                "caption": "Minimum contrast ratios by content type",
+                "columns": {
+                    "content": "Content",
+                    "criterion": "Criterion",
+                    "aa": "AA",
+                    "aaa": "AAA"
+                },
+                "criterion": "SC {{criterion}}",
+                "notApplicable": "n/a",
+                "rows": {
+                    "text": {
+                        "label": "Normal text"
+                    },
+                    "large": {
+                        "label": "Large text",
+                        "hint": "≥ 24px, or ≥ 18.66px bold"
+                    },
+                    "ui": {
+                        "label": "Icons, UI parts"
+                    }
+                }
+            },
+            "verdict": {
+                "title": "Verdict",
+                "aaAllPass": "Level AA is met for every pair.",
+                "aaSomeFail": "Level AA is not met for every pair.",
+                "bodyAllAaa": "All body and paragraph text also meets AAA in both themes.",
+                "bodyNotAllAaa": "Not all body and paragraph text meets AAA yet.",
+                "missesAaa": "What stops short of AAA: {{list}}.",
+                "explanation": "Reaching AAA there would mean changing the brand orange and flattening the text hierarchy, so the site targets AA for these, and AAA for everything you read."
+            },
+            "pairs": {
+                "title": "Every pair",
+                "caption": "Color pairs used in the {{theme}} and their contrast ratios",
+                "themeOption": "{{name}} · {{count}}",
+                "darkTheme": "Dark theme",
+                "lightTheme": "Light theme",
+                "columns": {
+                    "sample": "Sample",
+                    "usage": "Where it's used",
+                    "colors": "Colors",
+                    "type": "Type",
+                    "ratio": "Ratio",
+                    "aa": "AA",
+                    "aaa": "AAA"
+                },
+                "colors": "{{foreground}} on {{background}}",
+                "kinds": {
+                    "text": "Normal text",
+                    "large": "Large text",
+                    "ui": "Icon / UI part",
+                    "decorative": "Decorative"
+                },
+                "badges": {
+                    "pass": "Pass",
+                    "fail": "Fail",
+                    "notMet": "Not met",
+                    "decorative": "Decorative",
+                    "notApplicable": "n/a",
+                    "levelPass": "{{level}} pass",
+                    "levelFail": "{{level}} fail",
+                    "levelNotMet": "{{level}} not met",
+                    "decorativeNotRequired": "Decorative · not required"
+                },
+                "usage": {
+                    "bodyText": "Body text",
+                    "bodyTextOnCards": "Body text on cards",
+                    "buttonLabelsInCards": "Button labels in cards",
+                    "secondaryText": "Secondary text",
+                    "secondaryTextOnCards": "Secondary text on cards",
+                    "stackChips": "Stack chips",
+                    "metaLabels": "Dates, meta labels",
+                    "metaLabelsOnCards": "Meta labels on cards",
+                    "placeholderLabels": "Placeholder labels",
+                    "sectionLabels": "Section labels, prompt",
+                    "promptInTerminal": "Prompt in terminal blocks",
+                    "pathInPrompt": "Path in prompt",
+                    "pathInTerminal": "Path in terminal blocks",
+                    "terminalText": "Terminal text",
+                    "terminalSecondary": "Terminal secondary text",
+                    "primaryButtonLabel": "Primary button label",
+                    "activeLanguageToggle": "Active language toggle",
+                    "heroNumeral": "Hero numeral",
+                    "arrowIcons": "Arrow icons in buttons",
+                    "openToWorkDot": "Open-to-work dot",
+                    "statusDot": "Status dot (project)",
+                    "borders": "Borders and dividers",
+                    "cardBorders": "Card borders",
+                    "insetText": "Text on inset panels",
+                    "insetSecondary": "Secondary text on inset panels",
+                    "roleAi": "\"AI\" label on inset panels",
+                    "roleMe": "\"Me\" label on inset panels"
+                }
+            },
+            "footer": "Ratios computed with the WCAG 2.2 relative luminance formula."
+        },
+        "notFoundPage": {
+            "title": "Page not found",
+            "body": "There is nothing at this address. It may have moved, or the link is mistyped.",
+            "home": "Back to home"
+        }
+    },
+    "other": {
+        "meta": {
+            "title_one": "Franta · {{yearsWord}} year of React",
+            "title_other": "Franta · {{yearsWord}} years of React",
+            "description_one": "Frontend developer in Brno. {{yearsWord, capitalize}} year of React, now reaching beyond the browser.",
+            "description_other": "Frontend developer in Brno. {{yearsWord, capitalize}} years of React, now reaching beyond the browser."
+        },
+        "titles": {
+            "project": "{{title}} · Franta",
+            "contrastReport": "Color contrast report · Franta",
+            "notFound": "Page not found · Franta"
+        }
+    }
+}

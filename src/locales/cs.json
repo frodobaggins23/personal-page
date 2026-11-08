@@ -1,0 +1,437 @@
+{
+    "shared": {
+        "navigation": {
+            "ariaLabel": "Hlavní",
+            "skipToContent": "Přeskočit na obsah",
+            "homeLabel": "franta, úvod",
+            "items": {
+                "experience": "Praxe",
+                "projects": "Projekty",
+                "about": "O mně",
+                "contact": "Kontakt"
+            },
+            "menu": {
+                "open": "Otevřít menu",
+                "close": "Zavřít menu"
+            },
+            "languageLabel": "Jazyk",
+            "themeLabel": "Vzhled",
+            "themeDark": "Tmavý",
+            "themeLight": "Světlý",
+            "switchToLight": "Přepnout na světlý vzhled",
+            "switchToDark": "Přepnout na tmavý vzhled",
+            "allProjects": "Všechny projekty",
+            "backToHome": "Zpět na úvod",
+            "home": "Úvod"
+        },
+        "components": {
+            "footer": {
+                "builtWith": "Postaveno v Reactu + TypeScriptu. Běží na Ubuntu, které spravuju sám.",
+                "accessibilityReport": "Přístupnost: report kontrastu barev (WCAG 2.2)",
+                "copyright": "© {{year}} Franta [Příjmení]"
+            },
+            "projectCard": {
+                "readMore": "Více",
+                "readMoreAbout": "o projektu {{title}}"
+            },
+            "overlay": {
+                "close": "Zavřít"
+            },
+            "timeline": {
+                "stackLabel": "Technologie"
+            }
+        }
+    },
+    "pages": {
+        "mainPage": {
+            "hero": {
+                "prompt": "whoami",
+                "promptOutput": "franta · frontend vývojář · Brno",
+                "role": "frontend vývojář · Brno",
+                "titleLine2": "s Reactem.",
+                "subtitle": "Teď i za hranicemi prohlížeče.",
+                "lead": "React je můj základ. S AI agenty jako parťákem u kódu se posouvám do backendu a Linuxu rychleji, než bych zvládl sám. Testy a code review jsou ale pořád na mně.",
+                "availability": {
+                    "openToWork": "Otevřený novým nabídkám · [od MĚSÍC ROK]"
+                },
+                "cta": "Ozvěte se",
+                "stackLabel": "Hlavní technologie",
+                "titleLine1_one": "rok",
+                "titleLine1_few": "roky",
+                "titleLine1_other": "let"
+            },
+            "experience": {
+                "label": "01 / Praxe",
+                "now": "dosud",
+                "jobs": {
+                    "job-1": {
+                        "role": "Frontend vývojář",
+                        "summary": "[Jedna až dvě věty: jaký produkt, kdo ho používal a co vám tým svěřil.]"
+                    },
+                    "job-2": {
+                        "role": "Frontend vývojář",
+                        "summary": "[Jedna až dvě věty o tom, co jste tam dělal.]"
+                    },
+                    "job-3": {
+                        "role": "[Junior] frontend vývojář",
+                        "summary": "[Jedna až dvě věty o tom, co jste tam dělal.]"
+                    }
+                },
+                "before": {
+                    "period": "Před {{year}}",
+                    "title": "Online marketing",
+                    "summary": "Analytika, e-mailové kampaně, koordinace kampaní a samostatné vedení projektů.",
+                    "link": "Víc v sekci O mně"
+                },
+                "title_one": "{{yearsWord, capitalize}} rok Reactu v produkci.",
+                "title_few": "{{yearsWord, capitalize}} roky Reactu v produkci.",
+                "title_other": "{{yearsWord, capitalize}} let Reactu v produkci."
+            },
+            "projects": {
+                "label": "02 / Projekty",
+                "title": "Co stavím mimo práci.",
+                "intro": "Klientská práce je pod NDA. Tyhle projekty jsou moje, takže se můžete podívat i do kódu."
+            },
+            "about": {
+                "label": "03 / O mně",
+                "title": "Než přišel kód, byl tu marketing.",
+                "body": "Začínal jsem v online marketingu: Google Analytics, e-mailové kampaně, koordinace spuštění a samostatné vedení projektů. Proto se pořád nejdřív ptám <em>„jak to budeme měřit?“</em>, než otevřu editor, a proto si rozumím i s produktem, marketingem a klienty, nejen s vývojáři.",
+                "facts": {
+                    "linux": {
+                        "label": "Linux",
+                        "value": "Ubuntu je můj hlavní systém, na práci i na všechno ostatní. Zlepšuju se v terminálu a v nastavení systému, dotfile po dotfilu."
+                    },
+                    "learning": {
+                        "label": "Učím se",
+                        "value": "Python a vývoj backendu."
+                    },
+                    "offTheClock": {
+                        "label": "Po práci",
+                        "value": "Túry po jižní Moravě i dál."
+                    },
+                    "languages": {
+                        "label": "Jazyky",
+                        "value": "Čeština (rodilý mluvčí), angličtina ([úroveň])"
+                    }
+                },
+                "photo": {
+                    "placeholderLabel": "[FOTO]",
+                    "alt": "Zástupná fotografie: Franta",
+                    "caption": "To jsem já, většinou někde na stezce.",
+                    "enlarge": "Zvětšit fotografii",
+                    "dialogLabel": "Fotografie Franty"
+                }
+            },
+            "contact": {
+                "label": "04 / Kontakt",
+                "title": "Pojďme si promluvit.",
+                "body": "Sídlím v Brně. Nejradši hybridně, plně na dálku taky klidně.",
+                "linkedin": "Napište mi na LinkedIn",
+                "github": "GitHub"
+            }
+        },
+        "projectPage": {
+            "labels": {
+                "fields": {
+                    "type": "Typ",
+                    "status": "Stav",
+                    "stack": "Technologie",
+                    "links": "Odkazy"
+                },
+                "links": {
+                    "demo": "Živá ukázka",
+                    "source": "Zdrojový kód"
+                },
+                "status": {
+                    "inProgress": "Rozpracováno",
+                    "done": "Hotovo"
+                },
+                "sections": {
+                    "whatItIs": "Co to je",
+                    "focus": "Na co jsem se zaměřil",
+                    "inUse": "Jak se používá dnes",
+                    "whoDidWhat": "Kdo co dělal",
+                    "learned": "Co jsem se naučil"
+                },
+                "roles": {
+                    "ai": "AI",
+                    "me": "Já"
+                },
+                "screens": "Snímky obrazovky",
+                "moreProjects": "Další projekty",
+                "next": "Další · {{current}} / {{total}}",
+                "backToProjects": "Zpět na všechny projekty"
+            },
+            "projects": {
+                "moje-hory": {
+                    "card": {
+                        "kind": "01 · Aplikace v Angularu",
+                        "title": "Moje Hory",
+                        "summary": "Mobile-first deník výstupů na 11 českých hor s GPS trasami, galeriemi a statistikami. Moje cesta k Angularu po letech s Reactem.",
+                        "mediaLabel": "Zástupný snímek obrazovky: Moje Hory v telefonu",
+                        "mediaCaption": "[SNÍMEK · Moje Hory]"
+                    },
+                    "detail": {
+                        "prompt": "cat moje-hory",
+                        "lead_one": "Mobile-first deník výstupů na 11 českých hor a moje cesta k Angularu po {{yearsWordAfterPo}} roce s Reactem.",
+                        "lead_few": "Mobile-first deník výstupů na 11 českých hor a moje cesta k Angularu po {{yearsWordAfterPo}} letech s Reactem.",
+                        "lead_other": "Mobile-first deník výstupů na 11 českých hor a moje cesta k Angularu po {{yearsWordAfterPo}} letech s Reactem.",
+                        "type": "Vlastní projekt, sólo",
+                        "whatItIs": "Deník mých výstupů na 11 vybraných českých hor: fotogalerie, GPS trasy a roční statistiky. Je to přestavba mé staré jednostránkové aplikace na vícestránkovou aplikaci v Angularu.",
+                        "focus": "Pochopit, jak Angular uvažuje. Navrhl jsem strukturu, design systém i každou obrazovku. Hlavní roli měla hrát mapa, takže rozhraní je světlé a teplé, aby vedle podkladů Mapy.cz nekřičelo.",
+                        "inUse": "Zapisuju do ní své výstupy. [Kdo další ji používá, nebo kolik túr v ní zatím je.]",
+                        "ai": "Většinu kódu napsal Claude podle mých specifikací a wireframů.",
+                        "me": "Architektura, design systém a pravidla pro agenty. Kontrola každé změny a testování na skutečném telefonu na skutečné stezce.",
+                        "learned": [
+                            "Služby a dependency injection místo hooků a kontextu, a proč to Angular chce právě takhle.",
+                            "[Něco o šablonách, routingu nebo signálech.]",
+                            "Na prázdných stavech záleží: dva výstupy jsou pokrok, ne „žádná data“."
+                        ],
+                        "screens": [
+                            {
+                                "caption": "[OBRAZOVKA · seznam hor]",
+                                "label": "Zástupný snímek obrazovky: seznam hor"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · mapa + GPS trasa]",
+                                "label": "Zástupný snímek obrazovky: mapa s GPS trasou"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · statistiky]",
+                                "label": "Zástupný snímek obrazovky: roční statistiky"
+                            }
+                        ]
+                    }
+                },
+                "self-hosted": {
+                    "card": {
+                        "kind": "02 · Infrastruktura",
+                        "title": "Tenhle web na vlastním serveru",
+                        "summary": "Žádný Vercel, žádná magie. Ubuntu VPS, kterou si sám nastavuju a spravuju, od zabezpečení SSH po obnovu TLS certifikátů.",
+                        "mediaLabel": "Výstup terminálu: stav nginx a doba běhu serveru"
+                    },
+                    "detail": {
+                        "prompt": "cat self-hosted",
+                        "lead": "[Jedna až dvě věty představující web na vlastním serveru.]",
+                        "type": "[Typ, např. Vlastní projekt, sólo]",
+                        "whatItIs": "[Co to je.]",
+                        "focus": "[Na co jsem se zaměřil.]",
+                        "inUse": "[Jak se používá dnes.]",
+                        "ai": "[Co udělala AI.]",
+                        "me": "[Co jsem dělal já.]",
+                        "learned": ["[Poznatek 1.]", "[Poznatek 2.]", "[Poznatek 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[OBRAZOVKA · 1]",
+                                "label": "Zástupný snímek obrazovky: první obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 2]",
+                                "label": "Zástupný snímek obrazovky: druhá obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 3]",
+                                "label": "Zástupný snímek obrazovky: třetí obrazovka"
+                            }
+                        ]
+                    }
+                },
+                "agent-rules": {
+                    "card": {
+                        "kind": "03 · Workflow",
+                        "title": "Pravidla pro AI agenty",
+                        "summary": "Jak držím Claude Code a GitHub Copilot na uzdě: nejdřív testy, moje konvence, moje šablona projektu.",
+                        "mediaLabel": "Strom složek repozitáře s pravidly pro agenty"
+                    },
+                    "detail": {
+                        "prompt": "cat agent-rules",
+                        "lead": "[Jedna až dvě věty představující pravidla pro agenty.]",
+                        "type": "[Typ, např. Vlastní projekt, sólo]",
+                        "whatItIs": "[Co to je.]",
+                        "focus": "[Na co jsem se zaměřil.]",
+                        "inUse": "[Jak se používá dnes.]",
+                        "ai": "[Co udělala AI.]",
+                        "me": "[Co jsem dělal já.]",
+                        "learned": ["[Poznatek 1.]", "[Poznatek 2.]", "[Poznatek 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[OBRAZOVKA · 1]",
+                                "label": "Zástupný snímek obrazovky: první obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 2]",
+                                "label": "Zástupný snímek obrazovky: druhá obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 3]",
+                                "label": "Zástupný snímek obrazovky: třetí obrazovka"
+                            }
+                        ]
+                    }
+                },
+                "three-glasses": {
+                    "card": {
+                        "kind": "04 · Koncept · Produktový design",
+                        "title": "Three Glasses",
+                        "summary": "Koncept to-do aplikace, kde je vaše vytížení jako kuličky ve sklenici. Uvidíte, že je plná, dřív než kývnete na další úkol.",
+                        "mediaLabel": "Zástupný snímek obrazovky: Three Glasses",
+                        "mediaCaption": "[SNÍMEK · Three Glasses]"
+                    },
+                    "detail": {
+                        "prompt": "cat three-glasses",
+                        "lead": "[Jedna až dvě věty představující koncept.]",
+                        "type": "[Typ, např. Koncept, sólo]",
+                        "whatItIs": "[Co to je.]",
+                        "focus": "[Na co jsem se zaměřil.]",
+                        "inUse": "[Jak se používá dnes.]",
+                        "ai": "[Co udělala AI.]",
+                        "me": "[Co jsem dělal já.]",
+                        "learned": ["[Poznatek 1.]", "[Poznatek 2.]", "[Poznatek 3.]"],
+                        "screens": [
+                            {
+                                "caption": "[OBRAZOVKA · 1]",
+                                "label": "Zástupný snímek obrazovky: první obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 2]",
+                                "label": "Zástupný snímek obrazovky: druhá obrazovka"
+                            },
+                            {
+                                "caption": "[OBRAZOVKA · 3]",
+                                "label": "Zástupný snímek obrazovky: třetí obrazovka"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "contrastReportPage": {
+            "prompt": "contrast-check --standard wcag22",
+            "title": "Report kontrastu barev",
+            "lead": "Všechny dvojice textu a barev na tomto webu v obou vzhledech, změřené podle WCAG 2.2, aktuálního doporučení W3C. Cíl: úroveň AA všude, AAA všude, kde to design dovolí.",
+            "summary": {
+                "pairsChecked": "Kontrolováno dvojic",
+                "passAA": "Splňuje AA",
+                "passAAA": "Splňuje AAA",
+                "checkedOn": "Zkontrolováno {{date}} · dekorativní rámečky nejsou v součtu"
+            },
+            "thresholds": {
+                "title": "Prahové hodnoty",
+                "caption": "Minimální kontrastní poměry podle typu obsahu",
+                "columns": {
+                    "content": "Obsah",
+                    "criterion": "Kritérium",
+                    "aa": "AA",
+                    "aaa": "AAA"
+                },
+                "criterion": "SC {{criterion}}",
+                "notApplicable": "n/a",
+                "rows": {
+                    "text": {
+                        "label": "Běžný text"
+                    },
+                    "large": {
+                        "label": "Velký text",
+                        "hint": "≥ 24 px, nebo ≥ 18,66 px tučně"
+                    },
+                    "ui": {
+                        "label": "Ikony, prvky rozhraní"
+                    }
+                }
+            },
+            "verdict": {
+                "title": "Závěr",
+                "aaAllPass": "Úroveň AA splňují všechny dvojice.",
+                "aaSomeFail": "Úroveň AA nesplňují všechny dvojice.",
+                "bodyAllAaa": "Veškerý hlavní text a odstavce splňují v obou vzhledech i AAA.",
+                "bodyNotAllAaa": "Ne všechen hlavní text a odstavce zatím splňují AAA.",
+                "missesAaa": "Na AAA nedosahuje: {{list}}.",
+                "explanation": "AAA by tam znamenalo změnit firemní oranžovou a zploštit hierarchii textu, proto tu web cílí na AA a na AAA u všeho, co se čte."
+            },
+            "pairs": {
+                "title": "Všechny dvojice",
+                "caption": "Dvojice barev ve vzhledu „{{theme}}“ a jejich kontrastní poměry",
+                "themeOption": "{{name}} · {{count}}",
+                "darkTheme": "Tmavý vzhled",
+                "lightTheme": "Světlý vzhled",
+                "columns": {
+                    "sample": "Ukázka",
+                    "usage": "Kde se používá",
+                    "colors": "Barvy",
+                    "type": "Typ",
+                    "ratio": "Poměr",
+                    "aa": "AA",
+                    "aaa": "AAA"
+                },
+                "colors": "{{foreground}} na {{background}}",
+                "kinds": {
+                    "text": "Běžný text",
+                    "large": "Velký text",
+                    "ui": "Ikona / prvek rozhraní",
+                    "decorative": "Dekorativní"
+                },
+                "badges": {
+                    "pass": "Splňuje",
+                    "fail": "Nesplňuje",
+                    "notMet": "Nesplněno",
+                    "decorative": "Dekorativní",
+                    "notApplicable": "n/a",
+                    "levelPass": "{{level}} splňuje",
+                    "levelFail": "{{level}} nesplňuje",
+                    "levelNotMet": "{{level}} nesplněno",
+                    "decorativeNotRequired": "Dekorativní · nevyžaduje se"
+                },
+                "usage": {
+                    "bodyText": "Hlavní text",
+                    "bodyTextOnCards": "Hlavní text na kartách",
+                    "buttonLabelsInCards": "Popisky tlačítek v kartách",
+                    "secondaryText": "Sekundární text",
+                    "secondaryTextOnCards": "Sekundární text na kartách",
+                    "stackChips": "Štítky technologií",
+                    "metaLabels": "Data a meta popisky",
+                    "metaLabelsOnCards": "Meta popisky na kartách",
+                    "placeholderLabels": "Popisky zástupných obrázků",
+                    "sectionLabels": "Popisky sekcí, prompt",
+                    "promptInTerminal": "Prompt v terminálových blocích",
+                    "pathInPrompt": "Cesta v promptu",
+                    "pathInTerminal": "Cesta v terminálových blocích",
+                    "terminalText": "Text v terminálu",
+                    "terminalSecondary": "Sekundární text v terminálu",
+                    "primaryButtonLabel": "Popisek hlavního tlačítka",
+                    "activeLanguageToggle": "Aktivní přepínač jazyka",
+                    "heroNumeral": "Velká číslice v úvodu",
+                    "arrowIcons": "Ikony šipek v tlačítkách",
+                    "openToWorkDot": "Tečka dostupnosti",
+                    "statusDot": "Tečka stavu (projekt)",
+                    "borders": "Rámečky a oddělovače",
+                    "cardBorders": "Rámečky karet",
+                    "insetText": "Text ve vložených panelech",
+                    "insetSecondary": "Sekundární text ve vložených panelech",
+                    "roleAi": "Popisek „AI“ ve vložených panelech",
+                    "roleMe": "Popisek „Já“ ve vložených panelech"
+                }
+            },
+            "footer": "Poměry jsou spočítané vzorcem relativní svítivosti podle WCAG 2.2."
+        },
+        "notFoundPage": {
+            "title": "Stránka nenalezena",
+            "body": "Na této adrese nic není. Možná se stránka přesunula, nebo je odkaz s překlepem.",
+            "home": "Zpět na úvod"
+        }
+    },
+    "other": {
+        "meta": {
+            "title_one": "Franta · {{yearsWord}} rok s Reactem",
+            "title_other": "Franta · {{yearsWord}} let s Reactem",
+            "description_one": "Frontend vývojář z Brna. {{yearsWord, capitalize}} rok s Reactem, teď i za hranicemi prohlížeče.",
+            "description_other": "Frontend vývojář z Brna. {{yearsWord, capitalize}} let s Reactem, teď i za hranicemi prohlížeče.",
+            "title_few": "Franta · {{yearsWord}} roky s Reactem",
+            "description_few": "Frontend vývojář z Brna. {{yearsWord, capitalize}} roky s Reactem, teď i za hranicemi prohlížeče."
+        },
+        "titles": {
+            "project": "{{title}} · Franta",
+            "contrastReport": "Report kontrastu barev · Franta",
+            "notFound": "Stránka nenalezena · Franta"
+        }
+    }
+}

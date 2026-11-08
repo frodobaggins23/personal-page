@@ -1,0 +1,173 @@
+{
+    "brand": {
+        "handle": "franta",
+        "promptUser": "franta@brno",
+        "projectsPath": "~/projects"
+    },
+    "languages": {
+        "cs": {
+            "label": "CZ",
+            "name": "Čeština"
+        },
+        "en": {
+            "label": "EN",
+            "name": "English"
+        }
+    },
+    "links": {
+        "linkedin": "[https://linkedin.com/in/your-profile]",
+        "github": "[https://github.com/your-profile]"
+    },
+    "hero": {
+        "stack": [
+            "React",
+            "TypeScript",
+            "Angular",
+            "Vitest · TDD",
+            "Ubuntu · nginx",
+            "Claude Code · Copilot"
+        ]
+    },
+    "experience": {
+        "jobs": [
+            {
+                "id": "job-1",
+                "company": "[Company name]",
+                "url": "[https://company-1]",
+                "from": "[2022]",
+                "to": null,
+                "stack": [
+                    "React",
+                    "TypeScript",
+                    "Redux",
+                    "Jest",
+                    "[tech]",
+                    "[tech]",
+                    "[tech]",
+                    "[tech]"
+                ]
+            },
+            {
+                "id": "job-2",
+                "company": "[Company name]",
+                "url": "[https://company-2]",
+                "from": "[2020]",
+                "to": "[2022]",
+                "stack": ["React", "[tech]", "[tech]", "[tech]"]
+            },
+            {
+                "id": "job-3",
+                "company": "[Company name]",
+                "url": "[https://company-3]",
+                "from": "[2019]",
+                "to": "[2020]",
+                "stack": ["React", "[tech]", "[tech]"]
+            }
+        ],
+        "before": {
+            "year": "[2019]"
+        }
+    },
+    "projects": [
+        {
+            "slug": "moje-hory",
+            "status": "inProgress",
+            "stack": ["Angular", "TypeScript", "SCSS", "Mapy.cz"],
+            "links": {
+                "demo": "[https://moje-hory-demo]",
+                "source": "[https://github.com/your-profile/moje-hory]"
+            },
+            "media": {
+                "kind": "image"
+            }
+        },
+        {
+            "slug": "self-hosted",
+            "status": "inProgress",
+            "stack": ["[tech]"],
+            "links": {
+                "demo": "[https://demo]",
+                "source": "[https://github.com/your-profile/personal-page]"
+            },
+            "media": {
+                "kind": "terminal",
+                "tone": "default",
+                "lines": [
+                    {
+                        "type": "prompt",
+                        "user": "franta@vps",
+                        "path": "~",
+                        "command": "systemctl is-active nginx"
+                    },
+                    {
+                        "type": "text",
+                        "text": "active"
+                    },
+                    {
+                        "type": "prompt",
+                        "user": "franta@vps",
+                        "path": "~",
+                        "command": "uptime -p"
+                    },
+                    {
+                        "type": "text",
+                        "text": "up [N] weeks, [N] days"
+                    },
+                    {
+                        "type": "prompt",
+                        "user": "franta@vps",
+                        "path": "~",
+                        "command": "",
+                        "hasCursor": true,
+                        "isDesktopOnly": true
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "agent-rules",
+            "status": "inProgress",
+            "stack": ["[tech]"],
+            "links": {
+                "demo": "[https://demo]",
+                "source": "[https://github.com/your-profile/agent-rules-and-guidelines]"
+            },
+            "media": {
+                "kind": "terminal",
+                "tone": "muted",
+                "lines": [
+                    {
+                        "type": "text",
+                        "text": "agent-rules-and-guidelines/"
+                    },
+                    {
+                        "type": "text",
+                        "text": "├── CLAUDE.md"
+                    },
+                    {
+                        "type": "text",
+                        "text": "├── copilot-instructions.md"
+                    },
+                    {
+                        "type": "tree",
+                        "prefix": "└── ",
+                        "highlight": "skills/",
+                        "suffix": "react-scaffold/"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "three-glasses",
+            "status": "inProgress",
+            "stack": ["[tech]"],
+            "links": {
+                "demo": "[https://demo]",
+                "source": "[https://github.com/your-profile/three-glasses]"
+            },
+            "media": {
+                "kind": "image"
+            }
+        }
+    ]
+}

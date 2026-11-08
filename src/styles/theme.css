@@ -1,0 +1,252 @@
+/*
+ * Portfolio · "Night trail" design tokens for Tailwind CSS v4
+ *
+ * Usage: import this file once (e.g. from src/index.css) instead of a bare
+ * `@import "tailwindcss";`.
+ *
+ * Theme switching: dark is the default. Set `data-theme="light"` on <html>
+ * to switch. Every color utility (bg-surface, text-fg-muted, ...) reads a
+ * CSS variable, so the whole page re-themes in place, with no `dark:` prefixes.
+ *
+ * Contrast: every pair below was checked against WCAG 2.2 (see docs/design.md).
+ * Rule of thumb: `accent` is for fills, large text and UI marks;
+ * `accent-ink` is for small orange TEXT and icons.
+ */
+
+@import 'tailwindcss';
+
+/* Optional: lets you write `dark:` / `light:` utilities for rare one-offs. */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+@custom-variant dark (&:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *));
+
+/* ---------- Raw values per theme ---------- */
+
+:root,
+[data-theme='dark'] {
+    color-scheme: dark;
+
+    /* Grounds */
+    --bg: #0f1219;
+    --header-bg: rgb(15 18 25 / 0.92);
+    --surface: #161a24; /* cards, panels */
+    --surface-2: #1e2330; /* buttons inside cards */
+    --chip: #161a24; /* stack tags in Experience */
+    --placeholder-a: #1b2030; /* striped image placeholders */
+    --placeholder-b: #161a24;
+    --inset: #0a0d13; /* inset panels (who did what) */
+
+    /* Lines */
+    --line: #262c3a; /* dividers, outlines (decorative) */
+    --card-border: #262c3a;
+
+    /* Text */
+    --fg: #eef1f6; /* body, headings        16.55:1 */
+    --fg-muted: #a3abba; /* secondary text         8.11:1 */
+    --fg-subtle: #7d8698; /* dates, meta labels     5.12:1 (AA) */
+
+    /* Brand */
+    --accent: #e95420; /* fills, big "7", cursor */
+    --accent-ink: #e95420; /* small orange text/icons 5.13:1 */
+    --on-accent: #0f1219; /* label on orange buttons 5.13:1 */
+    --path: #8fb3ff; /* "~" in the prompt */
+
+    /* Status */
+    --success: #5bd69a; /* open-to-work dot */
+    --success-ink: #5bd69a; /* "Pass" badge text */
+    --danger-ink: #f08965; /* "Fail" badge text */
+    --warning: #ffb000; /* "In progress" dot */
+
+    /* Elevation */
+    --elev-card: none;
+}
+
+[data-theme='light'] {
+    color-scheme: light;
+
+    --bg: #f6f7fa;
+    --header-bg: rgb(246 247 250 / 0.92);
+    --surface: #ffffff;
+    --surface-2: #eef1f5;
+    --chip: #e6e9ef;
+    --placeholder-a: #e6e9ef;
+    --placeholder-b: #eef1f5;
+    --inset: #ffffff;
+
+    --line: #dce0e8;
+    --card-border: #d3d8e2;
+
+    --fg: #121621; /* 16.86:1 */
+    --fg-muted: #4a5263; /*  7.32:1 */
+    --fg-subtle: #5e6678; /*  5.37:1 (AA) */
+
+    --accent: #e95420; /* large only on light: 3.41:1 */
+    --accent-ink: #b64219; /* small orange text: 5.18:1 */
+    --on-accent: #121621; /* 4.95:1 */
+    --path: #2f5fd0;
+
+    --success: #1f9d61;
+    --success-ink: #11703f;
+    --danger-ink: #b3361a;
+    --warning: #b87800;
+
+    --elev-card: 0 1px 2px rgb(18 22 33 / 0.06), 0 10px 28px -14px rgb(18 22 33 / 0.22);
+}
+
+/* Terminal blocks stay dark in BOTH themes. */
+:root,
+[data-theme='dark'] {
+    --term-bg: #0a0d13;
+    --term-fg: #eef1f6;
+    --term-muted: #a3abba;
+    --term-prompt: #e95420;
+    --term-path: #8fb3ff;
+}
+[data-theme='light'] {
+    --term-bg: #141823;
+}
+
+/* ---------- Tailwind theme ---------- */
+
+@theme inline {
+    /* Colors -> bg-bg, bg-surface, text-fg-muted, border-line, text-accent-ink ... */
+    --color-bg: var(--bg);
+    --color-header: var(--header-bg);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-chip: var(--chip);
+    --color-placeholder-a: var(--placeholder-a);
+    --color-placeholder-b: var(--placeholder-b);
+    --color-inset: var(--inset);
+    --color-line: var(--line);
+    --color-card-border: var(--card-border);
+    --color-fg: var(--fg);
+    --color-fg-muted: var(--fg-muted);
+    --color-fg-subtle: var(--fg-subtle);
+    --color-accent: var(--accent);
+    --color-accent-ink: var(--accent-ink);
+    --color-on-accent: var(--on-accent);
+    --color-path: var(--path);
+    --color-success: var(--success);
+    --color-success-ink: var(--success-ink);
+    --color-danger-ink: var(--danger-ink);
+    --color-warning: var(--warning);
+    --color-term-bg: var(--term-bg);
+    --color-term-fg: var(--term-fg);
+    --color-term-muted: var(--term-muted);
+    --color-term-prompt: var(--term-prompt);
+    --color-term-path: var(--term-path);
+
+    /* Elevation -> shadow-card */
+    --shadow-card: var(--elev-card);
+}
+
+@theme {
+    /* Fonts -> font-sans, font-mono (load Ubuntu Sans + Ubuntu Sans Mono) */
+    --font-sans: 'Ubuntu Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'Ubuntu Sans Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* Radii -> rounded-chip, rounded-btn, rounded-card ... */
+    --radius-chip: 6px;
+    --radius-tag: 8px;
+    --radius-btn: 14px;
+    --radius-card: 20px;
+    --radius-card-lg: 24px;
+    --radius-panel: 28px;
+
+    /* Type scale (fluid where the design is) -> text-numeral, text-hero ... */
+    --text-numeral: clamp(10.5rem, 22vw, 18.75rem);
+    --text-numeral--line-height: 0.74;
+    --text-hero: clamp(2.125rem, 4.4vw, 3.75rem);
+    --text-hero--line-height: 1;
+    --text-hero-sub: clamp(1.1875rem, 1.8vw, 1.625rem);
+    --text-hero-sub--line-height: 1.2;
+    --text-section: clamp(1.875rem, 3.2vw, 2.75rem);
+    --text-section--line-height: 1.08;
+    --text-contact: clamp(2.75rem, 7vw, 6rem);
+    --text-contact--line-height: 0.95;
+    --text-label: 0.75rem; /* mono, uppercase, tracking 0.08em */
+    /* Tailwind's default sizes would bring their own line-heights; the design uses the body's 1.55. */
+    --text-sm--line-height: 1.55;
+    --text-base--line-height: 1.55;
+    --text-lg--line-height: 1.55;
+    --text-xl--line-height: 1.55;
+    --text-2xl--line-height: 1.55;
+
+    /* Layout */
+    --container-page: 1200px;
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+    html {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+        text-wrap: pretty;
+    }
+    a:hover {
+        color: var(--accent-ink);
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        line-height: 1.55;
+    }
+    a {
+        color: inherit;
+    }
+    :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+}
+
+/* Blinking block cursor after ~/franta */
+@keyframes blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+@utility cursor-blink {
+    animation: blink 1.1s steps(1) infinite;
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+/* Striped image placeholder (remove once real screenshots are in) */
+@utility placeholder-stripes {
+    background: repeating-linear-gradient(
+        135deg,
+        var(--placeholder-a) 0 10px,
+        var(--placeholder-b) 10px 20px
+    );
+}
+
+/* Underline marking the current page in the desktop navigation */
+@utility nav-current {
+    box-shadow: inset 0 -2px 0 var(--accent);
+}
