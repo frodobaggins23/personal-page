@@ -5,9 +5,9 @@ Implement based on ./docs/blueprint
 
 components that would be reused across pages, belong here
 
-1. navigationMobile -  project navigation, mobile version. logo + hamburger menu + lang switcher + theme switcher 
-2. navigationDesktop -  project navigation, desktop version. logo + numbered menu + lang switcher + theme switcher 
-3. footer - 
+1. navigationMobile -  project navigation, mobile version. logo + hamburger menu + lang switcher + theme switcher
+2. navigationDesktop -  project navigation, desktop version. logo + numbered menu + lang switcher + theme switcher
+3. footer -
 4. projectCard - to be used on "../pages/mainPage" for featuring the main 4 reference projects
 5. projectHero - to be used on "../pages/projectPage" for featuring the hero section. Should be reusable with the same api for all 4 projects
 6. projectScreens - to be used on "../pages/projectPage" for featuring the screens section. Should be reusable with the same api for all 4 projects
@@ -18,3 +18,18 @@ components that would be reused across pages, belong here
 
 
 It is likely that some components (especially thos related to projectPage) will need a subcomponents to make the code conveniently atomic. So nest those inside the respective folders.
+
+### Notes
+- Accessible first: every component follows "Guiding principles: mobile first, accessible first" in the
+  root `CLAUDE.md` from its first version (semantics, keyboard, focus, names from the locale files).
+  Dedicated accessibility tests come in a later phase.
+- Two separate navigation components (not one `Header` with a variant as in the blueprint).
+  Switch from mobile to desktop at `lg` (1024 px).
+- The blueprint's component table (`docs/design.md` section 6) names the building blocks: `Logo`,
+  `LangSwitch`, `ThemeSwitch`, `MobileMenu`, `SectionHeading`, `Prompt`, `HeroNumeral`, `StatusBadge`,
+  `Button`, `TagList`, `Timeline`/`TimelineItem`, `TerminalBlock`, `FactsGrid`, `WhoDidWhat`,
+  `ImagePlaceholder`. Use them as shared or nested subcomponents with the props described there.
+- Icons: `lucide-react`, always `aria-hidden="true"`; icon-only buttons get an `aria-label` from the locale files.
+- `projectCard` reads kind / title / summary from `pages.projectPage.projects.<slug>.card`.
+- `ImagePlaceholder` stands in for every screenshot and the photo until real images exist.
+- Naming: folders camelCase, component files PascalCase (`projectCard/ProjectCard.tsx`), named exports, no barrels.
