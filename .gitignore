@@ -1,2 +1,11 @@
 .claude-logs
 docs/blueprint/
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example
+visual-qa
+test-results
+*.local
