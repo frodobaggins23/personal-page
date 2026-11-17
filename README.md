@@ -16,23 +16,27 @@ npm run dev      # http://localhost:5173
 
 ## Scripts
 
-| Command               | What it does                                      |
-| --------------------- | ------------------------------------------------- |
-| `npm run dev`         | Vite dev server                                   |
-| `npm run build`       | Typecheck + production build into `dist/`         |
-| `npm run preview`     | Serve `dist/` locally                             |
-| `npm run typecheck`   | `tsc -b`                                          |
-| `npm run lint`        | ESLint                                            |
-| `npm run format`      | Prettier (write); `format:check` only checks      |
-| `npm test`            | Vitest in watch mode                              |
-| `npm run test:run`    | Vitest, single run (also the pre-push hook)       |
-| `npx playwright test` | Visual QA screenshots into `visual-qa/` (ignored) |
+| Command               | What it does                                 |
+| --------------------- | -------------------------------------------- |
+| `npm run dev`         | Vite dev server                              |
+| `npm run build`       | Typecheck + production build into `dist/`    |
+| `npm run preview`     | Serve `dist/` locally                        |
+| `npm run typecheck`   | `tsc -b`                                     |
+| `npm run lint`        | ESLint                                       |
+| `npm run format`      | Prettier (write); `format:check` only checks |
+| `npm test`            | Vitest in watch mode                         |
+| `npm run test:run`    | Vitest, single run (also the pre-push hook)  |
+| `npx playwright test` | E2E smoke tests (build + serve + Chrome)     |
 
 ## Tests
 
 Vitest + React Testing Library (jsdom). Tests live in `__tests__/` next to the code. Logic
-(utils, contrast service) is written test-first. Playwright is only used for screenshots, uses the
-system Chrome (`channel: 'chrome'`) and compares by eye against `docs/blueprint/Portfolio.pdf`.
+(utils, contrast service) is written test-first.
+
+End-to-end smoke tests (`e2e/smoke.spec.ts`, Playwright with the system Chrome,
+`channel: 'chrome'`) build the app, serve it on port 4173 and check that it opens, the main page
+renders, the navigation works on desktop and mobile, and every route opens. Run them with
+`npx playwright test`.
 
 ## Content and placeholders
 

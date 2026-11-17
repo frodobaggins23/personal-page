@@ -3,7 +3,6 @@ coverage
 node_modules
 package-lock.json
 docs
-visual-qa
 .claude
 .claude-logs
 CLAUDE.md

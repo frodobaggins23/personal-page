@@ -19,14 +19,14 @@ deliberate deviations listed under "Agreed decisions".
 | `npm run lint:tailwind`| Tailwind classes that have a shorter canonical form (exit 1)     |
 | `npm run format:check` | Prettier check (`format` writes)                                 |
 | `npm run test:run`     | Vitest single run (`test` is watch mode)                         |
-| `npx playwright test`  | Visual QA screenshots into `visual-qa/` (gitignored)             |
+| `npx playwright test`  | E2E smoke tests (builds, serves `dist/`, drives Chrome)          |
 
 Run Playwright **exactly** as `npx playwright test`, without extra flags or pipes: the sandbox
 exclusion that lets Chrome start matches that exact command string.
 
 Definition of done for any change: `typecheck`, `lint`, `lint:tailwind`, `format:check`,
-`test:run` and `build` pass. A visible change also gets a Playwright run and a look at the affected
-screenshots. Say plainly what was not run.
+`test:run` and `build` pass. A change to routing, navigation or page structure also gets a
+Playwright run. Say plainly what was not run.
 
 ## Where things live
 
@@ -42,7 +42,7 @@ src/
   locales/      cs.json, en.json, common.json
   styles/       theme.css (the single source of design tokens)
   types/        shared types
-e2e/            Playwright visual QA only
+e2e/            Playwright smoke tests (smoke.spec.ts)
 scripts/        repo tooling (lintTailwind.mjs)
 ```
 
@@ -222,7 +222,13 @@ re-ask them.
   `src/config/siteConfig.ts`, never in the locale files. Only the availability text is localised;
   when the flag is `false` the badge is hidden (no "not available" state).
 
-### Visual QA
-- Verify "1:1" with Playwright screenshots of every route at 390 px and 1440 px, in dark and light
-  theme (`npx playwright test`), compared against `docs/blueprint/Portfolio.pdf`. Fix differences
-  before calling a page done. Output goes to the gitignored `visual-qa/` folder.
+### E2E tests
+- Playwright (`e2e/smoke.spec.ts`) is a smoke suite, not a visual comparison: the app opens, the main
+  page renders, the navigation is clickable (desktop links, mobile menu, hash jumps), and every route
+  opens (all four project pages, the contrast report, the 404 page). Runs at 1440 px and 390 px with
+  the language pinned to `en`.
+- Any uncaught page error or console error fails a test (an auto fixture), so a missing asset or a
+  runtime exception shows up even if the page looks fine.
+- Queries use roles and accessible names, like the unit tests. Scope a query to its landmark when a
+  link name is ambiguous (e.g. `#mobile-menu`, `contentinfo`).
+- Matching the design 1:1 against `docs/blueprint/Portfolio.pdf` is a manual review, not automated.

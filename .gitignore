@@ -6,6 +6,5 @@ coverage
 .env
 .env.*
 !.env.example
-visual-qa
 test-results
 *.local
