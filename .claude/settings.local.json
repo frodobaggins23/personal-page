@@ -1,0 +1,16 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "denyRead": [
+        "./src/locales"
+      ]
+    }
+  },
+  "permissions": {
+    "deny": [
+      "Read(./src/locales/**)"
+    ]
+  }
+}

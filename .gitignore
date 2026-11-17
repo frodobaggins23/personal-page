@@ -8,4 +8,5 @@ coverage
 !.env.example
 test-results
 *.local
+!.claude/settings.local.json
 src/locales/
