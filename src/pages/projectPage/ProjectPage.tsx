@@ -8,7 +8,6 @@ import { ProjectOverview } from '@/components/projectOverview/ProjectOverview';
 import { ProjectScreens } from '@/components/projectScreens/ProjectScreens';
 import { commonContent, findProject } from '@/config/content';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import { useYearsOfPraxis } from '@/hooks/useYearsOfPraxis';
 import { NotFoundPage } from '@/pages/notFoundPage/NotFoundPage';
 import { NextProjectNav } from '@/pages/projectPage/NextProjectNav';
 
@@ -22,7 +21,6 @@ export function ProjectPage() {
 
 function ProjectContent({ slug }: { slug: string }) {
     const { t } = useTranslation();
-    const years = useYearsOfPraxis();
     const { projects } = commonContent;
     const index = projects.findIndex((project) => project.slug === slug);
     const project = projects[index];
@@ -61,7 +59,7 @@ function ProjectContent({ slug }: { slug: string }) {
                     command: t(`${detail}.prompt`),
                 }}
                 title={title}
-                lead={t(`${detail}.lead`, years)}
+                lead={t(`${detail}.lead`)}
                 facts={{
                     type: { label: t(`${base}.labels.fields.type`), value: t(`${detail}.type`) },
                     status: {
