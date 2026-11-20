@@ -2,10 +2,14 @@ import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
-import { ImagePlaceholder } from '@/components/imagePlaceholder/ImagePlaceholder';
 import { TerminalBlock } from '@/components/terminalBlock/TerminalBlock';
 import { findProject } from '@/config/content';
 import type { ProjectSlug } from '@/types/content';
+
+import { ProjectImage } from '../projectImage/ProjectImage';
+
+const THUMB_WIDTH = 547;
+const THUMB_HEIGHT = 306;
 
 interface ProjectCardProps {
     slug: ProjectSlug;
@@ -27,10 +31,12 @@ export function ProjectCard({ slug }: ProjectCardProps) {
     return (
         <article className="flex w-full flex-col overflow-hidden rounded-card border border-card-border bg-surface shadow-card lg:rounded-card-lg">
             {media.kind === 'image' ? (
-                <ImagePlaceholder
-                    label={mediaLabel}
-                    caption={t(`${base}.mediaCaption`)}
-                    className="aspect-16/10 border-b border-line lg:aspect-video"
+                <ProjectImage
+                    src={media.thumb}
+                    alt={mediaLabel}
+                    width={THUMB_WIDTH}
+                    height={THUMB_HEIGHT}
+                    className="h-auto w-full border-b border-line"
                 />
             ) : (
                 <TerminalBlock

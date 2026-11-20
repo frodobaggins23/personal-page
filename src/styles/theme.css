@@ -38,6 +38,7 @@
     /* Lines */
     --line: #262c3a; /* dividers, outlines (decorative) */
     --card-border: #262c3a;
+    --bezel: #323847; /* phone frame around screenshots (decorative) */
 
     /* Text */
     --fg: #eef1f6; /* body, headings        16.55:1 */
@@ -74,6 +75,7 @@
 
     --line: #dce0e8;
     --card-border: #d3d8e2;
+    --bezel: #3d4455;
 
     --fg: #121621; /* 16.86:1 */
     --fg-muted: #4a5263; /*  7.32:1 */
@@ -119,6 +121,7 @@
     --color-inset: var(--inset);
     --color-line: var(--line);
     --color-card-border: var(--card-border);
+    --color-bezel: var(--bezel);
     --color-fg: var(--fg);
     --color-fg-muted: var(--fg-muted);
     --color-fg-subtle: var(--fg-subtle);

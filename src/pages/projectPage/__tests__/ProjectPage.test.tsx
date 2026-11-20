@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { Route, Routes } from 'react-router';
 
 import { ProjectPage } from '@/pages/projectPage/ProjectPage';
@@ -22,6 +22,20 @@ describe('ProjectPage', () => {
         expect(
             screen.getByRole('heading', { level: 2, name: 'What I learned' }),
         ).toBeInTheDocument();
+    });
+
+    it('shows the Moje Hory screenshots as images', () => {
+        renderRoute('/projects/moje-hory');
+
+        const screens = within(screen.getByRole('list', { name: 'Screenshots' }));
+        const images = screens.getAllByRole('img');
+        expect(images).toHaveLength(3);
+        images.forEach((image) =>
+            expect(image).toHaveAttribute(
+                'src',
+                expect.stringMatching(/^\/images\/projects\/moje_hory_0[1-3]\.webp$/),
+            ),
+        );
     });
 
     it('links "Next" to the following project and wraps around after the last one', () => {

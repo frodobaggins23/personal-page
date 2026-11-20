@@ -34,11 +34,15 @@ function ProjectContent({ slug }: { slug: string }) {
         return null;
     }
 
-    const screens = t(`${detail}.screens`, { returnObjects: true }) as {
-        caption: string;
-        label: string;
-    }[];
+    const screens = (
+        t(`${detail}.screens`, { returnObjects: true }) as { caption: string; label: string }[]
+    ).map((screen, screenIndex) => ({ ...screen, src: project.screens?.[screenIndex] }));
     const learned = t(`${detail}.learned`, { returnObjects: true }) as string[];
+
+    const linkItems = [
+        { label: t(`${base}.labels.links.demo`), href: project.links.demo },
+        { label: t(`${base}.labels.links.source`), href: project.links.source },
+    ].filter((item): item is { label: string; href: string } => item.href !== undefined);
 
     return (
         <Container>
@@ -73,10 +77,7 @@ function ProjectContent({ slug }: { slug: string }) {
                     },
                     links: {
                         label: t(`${base}.labels.fields.links`),
-                        items: [
-                            { label: t(`${base}.labels.links.demo`), href: project.links.demo },
-                            { label: t(`${base}.labels.links.source`), href: project.links.source },
-                        ],
+                        items: linkItems,
                     },
                 }}
             />

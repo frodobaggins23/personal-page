@@ -5,7 +5,7 @@ export interface ProjectFacts {
     type: { label: string; value: string };
     status: { label: string; tone: 'success' | 'warning'; value: string };
     stack: { label: string; value: string };
-    links: { label: string; items: readonly { label: string; href: string }[] };
+    links?: { label: string; items: readonly { label: string; href: string }[] };
 }
 
 const termClasses =
@@ -34,21 +34,23 @@ export function FactsGrid({ facts }: { facts: ProjectFacts }) {
                 <dt className={termClasses}>{facts.stack.label}</dt>
                 <dd className="m-0 text-[0.9375rem] lg:text-base">{facts.stack.value}</dd>
             </div>
-            <div className="col-span-full flex flex-col bg-bg px-2 py-1.5 lg:px-2.5 lg:py-2">
-                <dt className={`${termClasses} px-2 pt-2 pb-1`}>{facts.links.label}</dt>
-                <dd className="m-0 grid grid-cols-2 gap-1.5 pb-1">
-                    {facts.links.items.map((item) => (
-                        <ExternalLink
-                            key={item.label}
-                            href={item.href}
-                            iconClassName="text-accent-ink"
-                            className="flex min-h-11 items-center justify-between rounded-[10px] px-2.5 text-[0.9375rem] font-semibold no-underline lg:text-base"
-                        >
-                            {item.label}
-                        </ExternalLink>
-                    ))}
-                </dd>
-            </div>
+            {facts.links && facts.links.items.length > 0 && (
+                <div className="col-span-full flex flex-col bg-bg px-2 py-1.5 lg:px-2.5 lg:py-2">
+                    <dt className={`${termClasses} px-2 pt-2 pb-1`}>{facts.links.label}</dt>
+                    <dd className="m-0 grid grid-cols-2 gap-1.5 pb-1">
+                        {facts.links.items.map((item) => (
+                            <ExternalLink
+                                key={item.label}
+                                href={item.href}
+                                iconClassName="text-accent-ink"
+                                className="flex min-h-11 items-center justify-between rounded-[10px] px-2.5 text-[0.9375rem] font-semibold no-underline lg:text-base"
+                            >
+                                {item.label}
+                            </ExternalLink>
+                        ))}
+                    </dd>
+                </div>
+            )}
         </dl>
     );
 }

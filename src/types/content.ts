@@ -15,14 +15,18 @@ export type TerminalLine =
     | { type: 'tree'; prefix: string; highlight: string; suffix: string };
 
 export type ProjectMedia =
-    { kind: 'image' } | { kind: 'terminal'; tone: 'default' | 'muted'; lines: TerminalLine[] };
+    | { kind: 'image'; thumb: string }
+    | { kind: 'terminal'; tone: 'default' | 'muted'; lines: TerminalLine[] };
 
 export interface ProjectCommon {
     slug: ProjectSlug;
     status: ProjectStatus;
     stack: string[];
-    links: { demo: string; source: string };
+    links: { demo?: string; source?: string };
     media: ProjectMedia;
+    /** Public paths of the detail-page screenshots, in display order. */
+    screens?: string[];
+    thumb?: string;
 }
 
 export interface JobCommon {
