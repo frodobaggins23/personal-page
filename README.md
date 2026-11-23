@@ -16,17 +16,18 @@ npm run dev      # http://localhost:5173
 
 ## Scripts
 
-| Command               | What it does                                 |
-| --------------------- | -------------------------------------------- |
-| `npm run dev`         | Vite dev server                              |
-| `npm run build`       | Typecheck + production build into `dist/`    |
-| `npm run preview`     | Serve `dist/` locally                        |
-| `npm run typecheck`   | `tsc -b`                                     |
-| `npm run lint`        | ESLint                                       |
-| `npm run format`      | Prettier (write); `format:check` only checks |
-| `npm test`            | Vitest in watch mode                         |
-| `npm run test:run`    | Vitest, single run (also the pre-push hook)  |
-| `npx playwright test` | E2E smoke tests (build + serve + Chrome)     |
+| Command                        | What it does                                      |
+| ------------------------------ | ------------------------------------------------- |
+| `npm run dev`                  | Vite dev server                                   |
+| `npm run build`                | Typecheck + production build into `dist/`         |
+| `npm run preview`              | Serve `dist/` locally                             |
+| `npm run typecheck`            | `tsc -b`                                          |
+| `npm run lint`                 | ESLint                                            |
+| `npm run format`               | Prettier (write); `format:check` only checks      |
+| `npm run validate:locale-keys` | Keys missing / obsolete in `en.json` vs `cs.json` |
+| `npm test`                     | Vitest in watch mode                              |
+| `npm run test:run`             | Vitest, single run (also the pre-push hook)       |
+| `npx playwright test`          | E2E smoke tests (build + serve + Chrome)          |
 
 ## Tests
 

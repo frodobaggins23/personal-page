@@ -17,7 +17,8 @@
         "test": "vitest",
         "test:run": "vitest run",
         "prepare": "husky",
-        "lint:tailwind": "node scripts/lintTailwind.mjs"
+        "lint:tailwind": "node scripts/lintTailwind.mjs",
+        "validate:locale-keys": "node scripts/validateLocaleKeys.mjs"
     },
     "dependencies": {
         "@fontsource-variable/ubuntu-sans": "^5.3.0",
