@@ -22,9 +22,7 @@ export function VerdictSection({
 
     const names = verdict.pairsMissingAaa.map((id) => t(`${base}.pairs.usage.${id}`));
     const detail =
-        names.length > 0
-            ? `${t(`${base}.verdict.missesAaa`, { list: names.join('; ') })} ${t(`${base}.verdict.explanation`)}`
-            : null;
+        names.length > 0 ? `${t(`${base}.verdict.missesAaa`, { list: names.join('; ') })}` : null;
 
     return (
         <section
