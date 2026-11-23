@@ -9,8 +9,8 @@ import { join, relative } from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const baseFile = join(root, 'src/locales/cs.json');
-const targetFile = join(root, 'src/locales/en.json');
+const baseFile = join(root, 'src/locales/production/cs.json');
+const targetFile = join(root, 'src/locales/production/en.json');
 
 const pluralSuffix = /_(zero|one|two|few|many|other)$/;
 const czechCategories = ['one', 'few', 'other'];
