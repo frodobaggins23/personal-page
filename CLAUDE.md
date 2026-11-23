@@ -33,7 +33,8 @@ Playwright run. Say plainly what was not run.
 ```
 src/
   components/   shared UI, one folder per component (ProjectCard, Overlay, Timeline, ...)
-  pages/        one folder per route: mainPage, projectPage, contrastReportPage, notFoundPage
+  pages/        one folder per route: mainPage, projectPage, privacyByDesignPage,
+                contrastReportPage, notFoundPage
                 (page-specific sections and subcomponents are nested in the page folder)
   services/     localizationService (i18next setup), contrastReportService (WCAG math + CSS probing)
   hooks/        useLanguage, useTheme, useYearsOfPraxis, useDocumentTitle
@@ -204,7 +205,8 @@ re-ask them.
   "Served from Ubuntu, by me") is accurate and stays.
 - Plain SPA: one `index.html`, client-side routing, deliverable is a static `dist/`. The README
   documents the nginx fallback (`try_files $uri $uri/ /index.html;`).
-- Routes: `/` (mainPage), `/projects/:slug` (projectPage), `/accessibility` (contrastReportPage),
+- Routes: `/` (mainPage), `/projects/:slug` (projectPage), `/privacy-by-design`
+  (privacyByDesignPage, not a privacy policy), `/accessibility` (contrastReportPage),
   and a catch-all 404 page. An unknown project slug renders the 404 page. Language is not part of
   the URL.
 

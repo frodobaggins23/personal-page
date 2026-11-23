@@ -38,6 +38,12 @@ export interface JobCommon {
     stack: string[];
 }
 
+/** An entry on the privacy by design page; links to a project page only when it is one. */
+export interface PrivacyByDesignItem {
+    id: string;
+    projectSlug?: ProjectSlug;
+}
+
 export interface CommonContent {
     brand: { handle: string; promptUser: string; projectsPath: string };
     languages: Record<'cs' | 'en', { label: string; name: string }>;
@@ -45,4 +51,5 @@ export interface CommonContent {
     hero: { stack: string[] };
     experience: { jobs: JobCommon[]; before: { year: string } };
     projects: ProjectCommon[];
+    privacyByDesign: { prompt: string; items: PrivacyByDesignItem[] };
 }

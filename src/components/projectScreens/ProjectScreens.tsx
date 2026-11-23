@@ -19,7 +19,7 @@ const frameClasses = 'w-full rounded-[22px] border border-line lg:rounded-panel'
 
 // Dark gray (not black) bezel in both themes, like a real phone.
 const bezelClasses =
-    'h-auto w-full rounded-panel border-6 border-bezel shadow-card lg:rounded-[34px] lg:border-8';
+    'h-auto w-full rounded-panel border-6 border-bezel shadow-card lg:rounded-bezel-lg lg:border-8';
 
 const placeholderClasses =
     `${frameClasses} aspect-9/18 p-3 text-center lg:aspect-9/19 ` +

@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 
 import { MainPage } from '@/pages/mainPage/MainPage';
 import { renderWithProviders } from '@/test/renderWithProviders';
@@ -41,6 +41,25 @@ describe('MainPage', () => {
             'Rules for AI agents',
             'Three Glasses',
         ]);
+    });
+
+    it('wraps the project cards in the privacy and security perimeter', () => {
+        renderWithProviders(<MainPage />);
+
+        const perimeter = within(
+            screen.getByRole('group', { name: 'Privacy and security, across all projects' }),
+        );
+        expect(perimeter.getAllByRole('article')).toHaveLength(4);
+        expect(perimeter.getByRole('link', { name: /^privacy & security/ })).toHaveAttribute(
+            'href',
+            '/privacy-by-design',
+        );
+        // Mobile and desktop variants of the footer link; CSS shows one of them.
+        const footerLinks = perimeter.getAllByRole('link', {
+            name: /How I build with privacy in mind/,
+        });
+        expect(footerLinks).toHaveLength(2);
+        footerLinks.forEach((link) => expect(link).toHaveAttribute('href', '/privacy-by-design'));
     });
 
     it('shows the availability badge when open to work', () => {

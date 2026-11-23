@@ -39,6 +39,7 @@ export type UsageId =
     | 'statusDot'
     | 'borders'
     | 'cardBorders'
+    | 'perimeter'
     | 'insetText'
     | 'insetSecondary'
     | 'roleAi'
@@ -315,6 +316,7 @@ export const PAIR_DEFINITIONS: readonly PairDefinition[] = [
         kind: 'decorative',
         themes: ['light'],
     },
+    { id: 'perimeter', foreground: 'perimeter', background: 'bg', kind: 'decorative' },
 ];
 
 export const THEMES: readonly Theme[] = ['dark', 'light'];

@@ -83,6 +83,32 @@ for (const viewport of viewports) {
             ).toBeInViewport();
         });
 
+        test('opens the privacy by design page from both perimeter links', async ({ page }) => {
+            const perimeterLinks = [/^privacy & security/, /How I build with privacy in mind/];
+            for (const name of perimeterLinks) {
+                await page.goto('/');
+                await page
+                    .getByRole('group', { name: 'Privacy and security, across all projects' })
+                    .getByRole('link', { name })
+                    .click();
+
+                await expect(page).toHaveURL(/\/privacy-by-design$/);
+                await expect(page).toHaveTitle('Privacy & security · Franta');
+                await expect(
+                    page.getByRole('heading', { level: 1, name: 'Privacy & security' }),
+                ).toBeVisible();
+            }
+
+            await expect(
+                page.getByRole('heading', { level: 3, name: "It's slower. It's worth it." }),
+            ).toBeVisible();
+            await page
+                .getByRole('main')
+                .getByRole('link', { name: 'Moje Hory', exact: true })
+                .click();
+            await expect(page).toHaveURL(/\/projects\/moje-hory$/);
+        });
+
         test('opens the contrast report from the footer', async ({ page }) => {
             await page.goto('/');
             await page

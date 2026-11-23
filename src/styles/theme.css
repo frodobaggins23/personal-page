@@ -38,6 +38,7 @@
     /* Lines */
     --line: #262c3a; /* dividers, outlines (decorative) */
     --card-border: #262c3a;
+    --perimeter: #3b4356; /* dashed privacy & security frame (decorative) */
     --bezel: #323847; /* phone frame around screenshots (decorative) */
 
     /* Text */
@@ -75,6 +76,7 @@
 
     --line: #dce0e8;
     --card-border: #d3d8e2;
+    --perimeter: #b9c0cd;
     --bezel: #3d4455;
 
     --fg: #121621; /* 16.86:1 */
@@ -121,6 +123,7 @@
     --color-inset: var(--inset);
     --color-line: var(--line);
     --color-card-border: var(--card-border);
+    --color-perimeter: var(--perimeter);
     --color-bezel: var(--bezel);
     --color-fg: var(--fg);
     --color-fg-muted: var(--fg-muted);
@@ -155,6 +158,9 @@
     --radius-card: 20px;
     --radius-card-lg: 24px;
     --radius-panel: 28px;
+    --radius-perimeter: 26px; /* mobile; 34px from lg */
+    --radius-perimeter-lg: 34px;
+    --radius-bezel-lg: 34px; /* phone frame around screenshots, from lg */
 
     /* Type scale (fluid where the design is) -> text-numeral, text-hero ... */
     --text-numeral: clamp(10.5rem, 22vw, 18.75rem);

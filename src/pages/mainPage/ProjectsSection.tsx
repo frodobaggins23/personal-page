@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ProjectCard } from '@/components/projectCard/ProjectCard';
 import { SectionHeading } from '@/components/sectionHeading/SectionHeading';
 import { projectSlugs } from '@/config/content';
+import { SecurityPerimeter } from '@/pages/mainPage/SecurityPerimeter';
 
 const base = 'pages.mainPage.projects';
 
@@ -25,13 +26,15 @@ export function ProjectsSection() {
                     {t(`${base}.intro`)}
                 </p>
             </div>
-            <ul className="m-0 grid list-none gap-6 p-0 grid-cols-[repeat(auto-fit,minmax(min(460px,100%),1fr))]">
-                {projectSlugs.map((slug) => (
-                    <li key={slug} className="flex">
-                        <ProjectCard slug={slug} />
-                    </li>
-                ))}
-            </ul>
+            <SecurityPerimeter>
+                <ul className="m-0 grid list-none gap-6 p-0 grid-cols-[repeat(auto-fit,minmax(min(460px,100%),1fr))]">
+                    {projectSlugs.map((slug) => (
+                        <li key={slug} className="flex">
+                            <ProjectCard slug={slug} />
+                        </li>
+                    ))}
+                </ul>
+            </SecurityPerimeter>
         </section>
     );
 }
