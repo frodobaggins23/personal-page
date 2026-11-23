@@ -47,8 +47,15 @@ describe('applyLanguage', () => {
             }),
         };
         const root = { lang: '' };
+        // The warning is expected here; spying keeps it out of the test output.
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(() => applyLanguage('cs', { storage, changeLanguage: vi.fn(), root })).not.toThrow();
         expect(root.lang).toBe('cs');
+        expect(warn).toHaveBeenCalledWith(
+            'Could not persist the language choice.',
+            expect.any(Error),
+        );
+        warn.mockRestore();
     });
 });

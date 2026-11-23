@@ -54,7 +54,11 @@ describe('applyTheme', () => {
                 throw new Error('denied');
             },
         };
+        // The warning is expected here; spying keeps it out of the test output.
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(() => applyTheme('light', { root: makeRoot(), storage })).not.toThrow();
+        expect(warn).toHaveBeenCalledWith('Could not persist the theme choice.', expect.any(Error));
+        warn.mockRestore();
     });
 });

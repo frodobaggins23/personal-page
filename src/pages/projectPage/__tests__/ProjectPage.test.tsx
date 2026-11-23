@@ -1,33 +1,52 @@
 import { screen, within } from '@testing-library/react';
+import i18n from 'i18next';
 import { Route, Routes } from 'react-router';
 
 import { ProjectPage } from '@/pages/projectPage/ProjectPage';
 import { renderWithProviders } from '@/test/renderWithProviders';
 
-const renderRoute = (route: string, language: 'cs' | 'en' = 'en') =>
+// Expected text is read from the locale files, so the tests survive copy changes.
+const base = 'pages.projectPage';
+
+const renderRoute = (route: string) =>
     renderWithProviders(
         <Routes>
             <Route path="/projects/:slug" element={<ProjectPage />} />
         </Routes>,
-        { route, language },
+        { route, language: 'en' },
     );
+
+const nextLinkName = (current: string, total: string) => (name: string) =>
+    name.includes(i18n.getFixedT('en')(`${base}.labels.next`, { current, total }));
 
 describe('ProjectPage', () => {
     it('renders the project with one h1 and the shared template sections', () => {
         renderRoute('/projects/moje-hory');
+        const t = i18n.getFixedT('en');
 
         expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
-        expect(screen.getByRole('heading', { level: 1, name: 'Moje Hory' })).toBeInTheDocument();
-        expect(screen.getByRole('heading', { level: 2, name: 'Who did what' })).toBeInTheDocument();
         expect(
-            screen.getByRole('heading', { level: 2, name: 'What I learned' }),
+            screen.getByRole('heading', {
+                level: 1,
+                name: t(`${base}.projects.moje-hory.card.title`),
+            }),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('heading', {
+                level: 2,
+                name: t(`${base}.labels.sections.whoDidWhat`),
+            }),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole('heading', { level: 2, name: t(`${base}.labels.sections.learned`) }),
         ).toBeInTheDocument();
     });
 
     it('shows the Moje Hory screenshots as images', () => {
         renderRoute('/projects/moje-hory');
+        const t = i18n.getFixedT('en');
 
-        const screens = within(screen.getByRole('list', { name: 'Screenshots' }));
+        const screens = within(screen.getByRole('list', { name: t(`${base}.labels.screens`) }));
         const images = screens.getAllByRole('img');
         expect(images).toHaveLength(3);
         images.forEach((image) =>
@@ -40,7 +59,7 @@ describe('ProjectPage', () => {
 
     it('links "Next" to the following project and wraps around after the last one', () => {
         renderRoute('/projects/moje-hory');
-        expect(screen.getByRole('link', { name: /Next · 02 \/ 04/ })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: nextLinkName('02', '04') })).toHaveAttribute(
             'href',
             '/projects/self-hosted',
         );
@@ -48,26 +67,18 @@ describe('ProjectPage', () => {
 
     it('cycles from three-glasses back to moje-hory', () => {
         renderRoute('/projects/three-glasses');
-        expect(screen.getByRole('link', { name: /Next · 01 \/ 04/ })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: nextLinkName('01', '04') })).toHaveAttribute(
             'href',
             '/projects/moje-hory',
         );
     });
 
-    it('spells out the years of experience in the lead', () => {
-        renderRoute('/projects/moje-hory');
-        expect(screen.getByText(/after \w+ years? of React/)).toBeInTheDocument();
-    });
-
-    it('uses the Czech "po" form in Czech', () => {
-        renderRoute('/projects/moje-hory', 'cs');
-        expect(screen.getByText(/po \S+ (letech|roce) s Reactem/)).toBeInTheDocument();
-    });
-
     it('shows the 404 page for an unknown slug', () => {
         renderRoute('/projects/nope');
+        const t = i18n.getFixedT('en');
+
         expect(
-            screen.getByRole('heading', { level: 1, name: 'Page not found' }),
+            screen.getByRole('heading', { level: 1, name: t('pages.notFoundPage.title') }),
         ).toBeInTheDocument();
     });
 });

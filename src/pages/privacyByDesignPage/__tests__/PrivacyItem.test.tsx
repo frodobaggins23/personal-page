@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import i18n from 'i18next';
 
 import { PrivacyItem } from '@/pages/privacyByDesignPage/PrivacyItem';
 import { renderWithProviders } from '@/test/renderWithProviders';
@@ -35,7 +36,11 @@ describe('PrivacyItem', () => {
 
     it('says what the item protects', () => {
         renderItem();
+        // The prefix comes from the locale file, so the test survives copy changes.
+        const t = i18n.getFixedT('en');
 
-        expect(screen.getByText('Protects: Something')).toBeInTheDocument();
+        expect(
+            screen.getByText(t('pages.privacyByDesignPage.protects', { what: 'Something' })),
+        ).toBeInTheDocument();
     });
 });
